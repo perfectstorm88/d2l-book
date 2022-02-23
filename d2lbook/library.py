@@ -62,16 +62,17 @@ def _save_block(source: str, save_mark: str):
             l = l[:m.span()[0]].rstrip()
             if l: block.append(l)
             for j in range(i + 1, len(lines)):
-                l = lines[j]
-                if not l.startswith(' ') and len(l):
-                    block.append(lines[j])
-                else:
-                    for k in range(j, len(lines)):
-                        if lines[k].startswith(' ') or not len(lines[k]):
-                            block.append(lines[k])
-                        else:
-                            break
-                    break
+                block.append(lines[j])
+                # l = lines[j]
+                # if not l.startswith(' ') and len(l):
+                #     block.append(lines[j])
+                # else:
+                #     for k in range(j, len(lines)):
+                #         if lines[k].startswith(' ') or not len(lines[k]):
+                #             block.append(lines[k])
+                #         else:
+                #             break
+                #     break
     return format_code('\n'.join(block))
 
 def _save_code(input_fn, save_mark='@save', tab=None,
